@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ajit-ai
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/status
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ACCESS_CODE
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: RATE_LIMIT_PER_HOUR
+        value: "20"
+      - key: DAILY_LIMIT
+        value: "300"
+      - key: ENABLE_BILLING
+        value: "false"
